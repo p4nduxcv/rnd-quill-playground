@@ -5,15 +5,21 @@
 <div class="container">
   <div class="row pt-5">
     <div class="col-md-8">
-      <form [formGroup]="editform" onsubmit="onSubmit()">
+      <form [formGroup]="editform" (ngSubmit)="onSubmit()">
         <div class="form-group">
-          <label for="edtor"><h3>Editor</h3></label>
-          <quill-editor></quill-editor>
+          <label for="editor"><h3>Editor</h3></label>
+          <quill-editor
+            [style]="editorStyle"
+            formControlName="editor"
+          ></quill-editor>
         </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
       </form>
     </div>
     <div class="col-md-4">
       <h3>Output</h3>
+
+      <p class="my-5" [innerHTML]="editorContent"></p>
     </div>
   </div>
 </div>
